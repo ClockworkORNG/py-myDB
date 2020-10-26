@@ -1,62 +1,63 @@
 import sys
-# добавлем пути поиска для классов
+
+# РґРѕР±Р°РІР»РµРј РїСѓС‚Рё РїРѕРёСЃРєР° РґР»СЏ РєР»Р°СЃСЃРѕРІ
 sys.path.append('./classes/import')
 sys.path.append('./classes/commands')
 
-# подключаем классы
+# РїРѕРґРєР»СЋС‡Р°РµРј РєР»Р°СЃСЃС‹
 from importData import ImportData
 from command import Command
 
-# Импортируем данные из файла
+# РРјРїРѕСЂС‚РёСЂСѓРµРј РґР°РЅРЅС‹Рµ РёР· С„Р°Р№Р»Р°
 i = ImportData('./data/input/testDb.txt')
 i.importFromTxt()
 
-# создаем объект для обработки команд
+# СЃРѕР·РґР°РµРј РѕР±СЉРµРєС‚ РґР»СЏ РѕР±СЂР°Р±РѕС‚РєРё РєРѕРјР°РЅРґ
 cmd = Command(i.getDbs())
 
-# команда
+# РєРѕРјР°РЅРґР°
 req = {
-    "command" : "find",
-    "table" : "sales"
-    
+    "command": "find",
+    "table": "sales"
+
 }
-# выполняем команду
+# РІС‹РїРѕР»РЅСЏРµРј РєРѕРјР°РЅРґСѓ
 cmd.doCommand(req)
 
 req = {
-    "command" : "remove",
-    "table" : "sales",
-    "condition" : {
-        "=" : ['city', 'London']  
+    "command": "remove",
+    "table": "sales",
+    "condition": {
+        "=": ['city', 'London']
     }
-    
+
 }
 cmd.doCommand(req)
 
 print()
 req = {
-    "command" : "find",
-    "table" : "sales"
-    
+    "command": "find",
+    "table": "sales"
+
 }
-# выполняем команду
+# РІС‹РїРѕР»РЅСЏРµРј РєРѕРјР°РЅРґСѓ
 cmd.doCommand(req)
 
 req = {
-     "command" : "insert",
-     "table" : "sales",
-     "values" : { 'snum' : 1008,
-                   'city' : 'Kiyv',
-                'sname' : "John"
-                 }
+    "command": "insert",
+    "table": "sales",
+    "values": {'snum': 1008,
+               'city': 'Kiyv',
+               'sname': "John"
+               }
 }
 
 cmd.doCommand(req)
 print()
 req = {
-    "command" : "find",
-    "table" : "sales"
-    
+    "command": "find",
+    "table": "sales"
+
 }
-# выполняем команду
+# РІС‹РїРѕР»РЅСЏРµРј РєРѕРјР°РЅРґСѓ
 cmd.doCommand(req)
